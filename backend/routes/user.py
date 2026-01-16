@@ -5,7 +5,7 @@ from datetime import timedelta
 
 from db.database import get_session
 from db.models import User
-from schemas.user import UserCreate, UserLogin, UserResponse
+from schemas.user import SignUpRequest, LoginRequest, AuthResponse
 from utils.security import create_access_token, verify_password, password_hash
 from config.config import ACCESS_TOKEN_EXPIRE_MINUTES
 
@@ -13,8 +13,8 @@ router = APIRouter(tags=["Users"])
 
 SessionDep = Annotated[Session, Depends(get_session)]
 
-@router.post("/signup", response_model=UserResponse)
-def register_user(user: UserCreate, session: SessionDep):
+@router.post("/signup", response_model=AuthResponse)
+def register_user(user: SignUpRequest, session: SessionDep):
     existing_user = session.exec(
         select(User).where(User.email == user.email)
     ).first()
