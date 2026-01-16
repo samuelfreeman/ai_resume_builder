@@ -1,8 +1,3 @@
-# from typing import Annotated
-# from datetime import datetime,timedelta , timezone 
-# from fastapi import fastapi , depends , HTTPException, Query
-#from sqlmodel import Field, Session, SQLModel, create_engine, select
-
 from pydantic import BaseModel
 from typing import List, Optional
 
