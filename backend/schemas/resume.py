@@ -1,14 +1,6 @@
 from pydantic import BaseModel
 from typing import List, Optional
 
-class SignUpRequest(BaseModel):
-    fullname: str
-    email:str
-    password:str
-
-class LoginRequest(BaseModel):
-    email: str
-    password:str
 
 class Experience(BaseModel):
     company: str
